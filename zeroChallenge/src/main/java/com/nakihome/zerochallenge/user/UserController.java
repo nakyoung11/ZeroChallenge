@@ -14,7 +14,10 @@ public class UserController {
 	
 	@RequestMapping(value="/login")
 	public String login(Model model) {
+		model.addAttribute(Const.TITLE,"로그인");
+		model.addAttribute(Const.VIEW, "user/login");
 		
+		return ViewRef.TEMP_DEFAULT;
 	}
 	
 	@RequestMapping(value="/join")
