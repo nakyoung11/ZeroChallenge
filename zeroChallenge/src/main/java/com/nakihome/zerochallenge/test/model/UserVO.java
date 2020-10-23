@@ -8,6 +8,7 @@ public class UserVO {
 	private String r_dt;
 	private String m_dt;
 	private int taget;
+	private int birth;
 	
 	
 	public int getI_user() {
@@ -51,6 +52,12 @@ public class UserVO {
 	}
 	public void setTaget(int taget) {
 		this.taget = taget;
+	}
+	public int getBirth() {
+		return birth;
+	}
+	public void setBirth(int birth) {
+		this.birth = birth;
 	}
 	
 	
