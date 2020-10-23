@@ -1,16 +1,23 @@
 package com.nakihome.zerochallenge.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.nakihome.zerochallenge.Const;
 import com.nakihome.zerochallenge.ViewRef;
+import com.nakihome.zerochallenge.test.model.UserVO;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 	
+	@Autowired
+	private UserService service;
+	
+	/*GET*/
 	
 	@RequestMapping(value="/login")
 	public String login(Model model) {
@@ -29,6 +36,15 @@ public class UserController {
 		return ViewRef.TEMP_DEFAULT;
 	}
 	
+	
+	/*POST*/
+	
+	@RequestMapping(value="/join", method = RequestMethod.POST)
+	public String join(UserVO param) {
+		int result = service.join(param);
+		
+		return "";
+	}
 	
 
 }

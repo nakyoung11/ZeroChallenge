@@ -2,7 +2,10 @@ package com.nakihome.zerochallenge.user;
 
 import org.apache.ibatis.annotations.Mapper;
 
-@Mapper
-public class UserMapper {
+import com.nakihome.zerochallenge.test.model.UserVO;
 
+@Mapper
+public interface UserMapper {
+   int insUser(UserVO param);
+	
 }
