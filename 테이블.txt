@@ -1,0 +1,135 @@
+CREATE TABLE c_code_m
+(
+    `subject_cd`   INT(10) UNSIGNED     NOT NULL    COMMENT '대분류', 
+    `subject_val`  VARCHAR(100)    NOT NULL    COMMENT '대분류명', 
+    PRIMARY KEY (subject_cd)
+);
+
+
+
+CREATE TABLE c_code_d
+(
+    `subject_cd`  INT(10) UNSIGNED         NOT NULL    COMMENT '대분류', 
+    `unit_cd`      INT(10) UNSIGNED            NOT NULL    COMMENT '단원 code', 
+    `unit_val`    VARCHAR(50)    NOT NULL    COMMENT '단원명', 
+    PRIMARY KEY (subject_cd, unit_cd),
+    FOREIGN KEY (subject_cd) REFERENCES c_code_m (subject_cd) ON DELETE RESTRICT ON UPDATE RESTRICT
+);
+
+CREATE TABLE user_test
+(  `i_user`    INT(10) UNSIGNED            NOT NULL ,
+   `i_test`    INT(10) UNSIGNED            NOT NULL ,
+   `test_count`     int(10)  UNSIGNED   NOT NULL ,
+   `r_dt` DATETIME NULL DEFAULT current_timestamp(),
+   PRIMARY KEY(i_user, i_test),
+   FOREIGN KEY (i_user) REFERENCES t_user(i_user) ON DELETE RESTRICT ON UPDATE RESTRICT,
+   FOREIGN KEY (i_test) REFERENCES t_test(i_test) ON DELETE RESTRICT ON UPDATE RESTRICT
+   );
+   
+
+
+CREATE TABLE t_test
+(  `i_test` INT(10) UNSIGNED            NOT NULL ,
+   `i_exam`   INT(10) UNSIGNED               NOT NULL ,
+   `test_nm` VARCHAR(45)     NOT NULL,
+   PRIMARY KEY (i_test),
+   FOREIGN KEY (i_exam) REFERENCES t_exam(i_exam) ON DELETE RESTRICT ON UPDATE RESTRICT
+);   
+
+
+CREATE TABLE t_exam
+(
+    `i_exam`   INT(10) UNSIGNED               NOT NULL    AUTO_INCREMENT COMMENT 'PK', 
+    `example`   VARCHAR(45)     NOT NULL    COMMENT '보기', 
+    `question`  VARCHAR(500)    NOT NULL    COMMENT '문제', 
+    `answer`    VARCHAR(300)    NOT NULL    COMMENT '정답', 
+    `category`  INT(10) UNSIGNED               NOT NULL    COMMENT '카테고리', 
+    `r_dt` 		DATETIME NULL DEFAULT current_timestamp(),
+    `m_dt` 	DATETIME NULL DEFAULT current_timestamp(),
+    PRIMARY KEY (i_exam)
+    
+);
+
+
+CREATE TABLE t_d_day
+(
+    `i_target`  INT(10) UNSIGNED           NOT NULL    COMMENT '시험종류', 
+    `d_day`     DATETIME    NOT NULL    COMMENT '시험날짜', 
+    `r_dt`      DATETIME NULL DEFAULT current_timestamp(),
+    `m_dt`     DATETIME NULL DEFAULT current_timestamp(),
+    PRIMARY KEY (i_target)
+);
+
+
+
+CREATE TABLE t_target
+(
+    `i_target`    INT(10) UNSIGNED              NOT NULL    COMMENT 'PK', 
+    `target_val`  VARCHAR(50)    NOT NULL    COMMENT '시험명', 
+    PRIMARY KEY (i_target),
+    FOREIGN KEY (i_target)   REFERENCES t_d_day (i_target) ON DELETE RESTRICT ON UPDATE RESTRICT
+);
+
+
+CREATE TABLE t_user
+(
+    `i_user`    INT(10) UNSIGNED            NOT NULL    AUTO_INCREMENT COMMENT 'PK', 
+    `user_nm`      VARCHAR(20)     NOT NULL    COMMENT '이름', 
+    `user_pw`  VARCHAR(50)    NOT NULL    COMMENT '비밀번호', 
+    `salt`  VARCHAR(200)    NOT NULL    COMMENT '암호화',
+    `user_email`     VARCHAR(100)    NOT NULL   ,
+    `r_dt`     DATETIME NULL DEFAULT CURRENT_TIMESTAMP(),
+    `m_dt`     DATETIME NULL DEFAULT CURRENT_TIMESTAMP(),
+    `target`    INT(10) UNSIGNED             NULL        COMMENT '관심있는 시험', 
+    `birth`  INT(9) UNSIGNED             NULL        COMMENT '생년월일',
+    PRIMARY KEY (i_user),
+    FOREIGN KEY (target)    REFERENCES c_code_m(subject_cd) ON DELETE RESTRICT ON UPDATE RESTRICT
+    
+);
+
+
+CREATE TABLE t_sns_user
+(
+    `i_user` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+     `salt`  VARCHAR(200)    NOT NULL    COMMENT '암호화',
+    `user_nm`      VARCHAR(20)     NOT NULL    COMMENT '이름', 
+    `user_email`     VARCHAR(100)    NOT NULL   ,
+    `r_dt`     DATETIME NULL DEFAULT CURRENT_TIMESTAMP(),
+    `m_dt`     DATETIME NULL DEFAULT CURRENT_TIMESTAMP(),
+    `target`    INT(10) UNSIGNED             NULL        COMMENT '관심있는 시험', 
+    `age`  INT(4) UNSIGNED             NULL        COMMENT '나이',
+    PRIMARY KEY (id),
+    FOREIGN KEY (target)    REFERENCES c_code_m(subject_cd) ON DELETE RESTRICT ON UPDATE RESTRICT
+    
+);
+
+
+CREATE TABLE t_examrecord
+(
+    `i_examRecord`   INT(10) UNSIGNED         NOT NULL    COMMENT 'PK', 
+    `view`          INT(10) UNSIGNED         NOT NULL    COMMENT '풀이 횟수', 
+    `check_answer`   INT(10) UNSIGNED          NOT NULL    COMMENT '정답률', 
+    `i_user`         INT(10) UNSIGNED         NOT NULL    COMMENT '문제를 푼 user', 
+	 `i_test` INT(10) UNSIGNED            NOT NULL ,
+	 `i_exam`      INT(10) UNSIGNED               NOT NULL,
+    `r_dt`          DATETIME  NULL DEFAULT CURRENT_TIMESTAMP(),
+    `m_dt`          DATETIME	 NULL DEFAULT CURRENT_TIMESTAMP(),
+    PRIMARY KEY (i_examRecord),
+    FOREIGN KEY (i_exam)  REFERENCES t_exam (i_exam) ON DELETE RESTRICT ON UPDATE RESTRICT,
+    FOREIGN KEY (i_user)  REFERENCES t_user (i_user) ON DELETE RESTRICT ON UPDATE RESTRICT
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
