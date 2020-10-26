@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+${name}님 환영합니다. 
+
 문제등록
 </body>
 </html>

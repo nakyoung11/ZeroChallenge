@@ -274,28 +274,32 @@ td, th {
 }
 .magin-top{margin-top:20px}
 
-.col-auto{margin-left: 55px}
+.col-auto{display: flex; align-items: center;}
 .form-signin {
     width: 420px;
-    height: 450px;
+    height: 600px;
     padding: 43px;
     align-self: center;
     border-radius: 19%;
-    background: #DE6964;
+    border:none;
+    background:#f5f5f5;
     display: flex;
     flex-flow: column;
-     box-shadow: 0px 0px 20px 0px #000000;
+     box-shadow: -60px 0px 100px -90px #000000,
+    60px 0px 100px -90px #000000;
  }
+ 
  
  .joinform
  { width: 500px;
     padding: 44px;
     align-self: center;
     border-radius: 2%;
-    background: #DE6964;
+    background: #f5f5f5;
     display: flex;
     flex-flow: column;
-    box-shadow: 0px 0px 20px 0px #000000;}
+    box-shadow: -60px 0px 100px -90px #000000,
+    60px 0px 100px -90px #000000;}
 
 .mb-4{margin-bottom: 30px}
 .form-label-group{    
@@ -317,7 +321,7 @@ td, th {
 #userid{width: 65%}
 .checker{display: flex; align-content: center; justify-content: space-between;}
 #idCheck{width: 30%; font-size: 12px;text-align: center; margin: 0}
-.custom-select{padding: 5px;}
+.custom-select{padding: 5px; margin-left: 20px}
 
 .glyphicon-asterisk:before {
 	content: "\2a"
@@ -1373,7 +1377,7 @@ body {
 	font-size: 14px;
 	line-height: 1.42857143;
 	color: #333;
-	background-color: #1F2438
+	background-color: #F5F5F5
 }
 
 button, input, select, textarea {
@@ -3640,7 +3644,7 @@ select[multiple].form-group-lg .form-control, textarea.form-group-lg .form-contr
 
 .btn-block {
 	display: block;
-    margin-top: 40px;
+    margin: 30px auto;
     width: 200px;
     align-self: center;
 }
@@ -3650,6 +3654,8 @@ select[multiple].form-group-lg .form-control, textarea.form-group-lg .form-contr
 .btn-block+.btn-block {
 	margin-top: 5px
 }
+
+
 
 input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].btn-block
 	{
@@ -5310,6 +5316,10 @@ a.badge:focus, a.badge:hover {
 .jumbotron .h1, .jumbotron h1 {
 	color: inherit
 }
+
+
+#naverIdLogin{align-self: center; }
+#naver{width:180px;}
 
 .jumbotron p {
 	margin-bottom: 15px;

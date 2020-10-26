@@ -7,5 +7,9 @@ import com.nakihome.zerochallenge.test.model.UserVO;
 @Mapper
 public interface UserMapper {
    int insUser(UserVO param);
+   
+   
+   
+   int selSnsLogin(String param);
 	
 }

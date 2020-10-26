@@ -22,4 +22,12 @@ public class UserService {
 		
 		return mapper.insUser(param);
 	}
+	
+	
+	public int snsLogin(String param) {
+		String salt= SecurityUtils.generateSalt();
+		String encrypt=SecurityUtils.getEncrypt(param, salt);
+		
+		return mapper.selSnsLogin(encrypt);
+	}
 }
