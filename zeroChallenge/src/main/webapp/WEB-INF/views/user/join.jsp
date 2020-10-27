@@ -5,17 +5,21 @@
 <div class="container">
 	<form class="joinform" action="/user/join" method="post" id="joinform"
 		onsubmit="return chk()">
+		
+		<input type="hidden" value="${naverUser.subscription_path}" name="subscription_path" >
+		<input type="hidden" value="${naverUser.age}" name="age" >
+		<input type="hidden" value="${naverUser.user_id}" name="user_id" >
 		<div class="text-center mb-4">
 			<h1 class="h3 mb-3 font-weight-normal">회원가입</h1>
 		</div>
 
 		<div class="form-label-group magin-top ">
-		 <c:if test="${id!=null||id>0}">
+		 <c:if test="${naverUser.subscription_path!=null||id>0}">
 			<div class="form-label-group magin-top ">
 				<label for="email">이메일</label>
 				 <input type="email" id="email"
 					name="user_email" class="form-control" placeholder="EMAIL" required autofocus 
-					value="<c:out value="${email}"></c:out>">
+					value="<c:out value="${naverUser.user_email}"></c:out>">
 			
 			
 			</div>
@@ -23,7 +27,7 @@
 			<div class="form-label-group  magin-top">
 				<label for="name">이름</label> <input type="text" id="name"
 					name="user_nm" class="form-control" placeholder="Name" required
-					autofocus value="<c:out value="${name}"></c:out>">
+					autofocus value="<c:out value="${naverUser.user_nm}"></c:out>">
 				
 			</div>
 			</c:if>

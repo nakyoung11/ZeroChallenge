@@ -12,7 +12,7 @@
 	 <link rel="icon" href="/res/img/m_favicon.png">
 
     <!-- 부트스트랩 -->
-    <link href="/res/css/bootstrap2.min.css" rel="stylesheet">
+    <link href="/res/css/bootstrap.min.css" rel="stylesheet">
     <!-- <link rel="shortcut icon" href="resources/img/favicon.png"> -->
    
 

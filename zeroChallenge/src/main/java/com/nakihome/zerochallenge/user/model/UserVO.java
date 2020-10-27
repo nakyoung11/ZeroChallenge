@@ -1,4 +1,4 @@
-package com.nakihome.zerochallenge.test.model;
+package com.nakihome.zerochallenge.user.model;
 
 public class UserVO {
 	private int i_user;
@@ -7,7 +7,7 @@ public class UserVO {
 	private String user_email;
 	private String r_dt;
 	private String m_dt;
-	private int taget;
+	private int target;
 	private int birth;
 	private String salt;
 	
@@ -48,12 +48,7 @@ public class UserVO {
 	public void setM_dt(String m_dt) {
 		this.m_dt = m_dt;
 	}
-	public int getTaget() {
-		return taget;
-	}
-	public void setTaget(int taget) {
-		this.taget = taget;
-	}
+
 	public int getBirth() {
 		return birth;
 	}
@@ -65,6 +60,12 @@ public class UserVO {
 	}
 	public void setSalt(String salt) {
 		this.salt = salt;
+	}
+	public int getTarget() {
+		return target;
+	}
+	public void setTarget(int target) {
+		this.target = target;
 	}
 	
 	

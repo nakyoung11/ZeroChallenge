@@ -8,7 +8,7 @@
 </head>
 <body>
 
-${name}님 환영합니다. 
+${sns_loginUser.user_nm}님 환영합니다. 
 
 문제등록
 </body>

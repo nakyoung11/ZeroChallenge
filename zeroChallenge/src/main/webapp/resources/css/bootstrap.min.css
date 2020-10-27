@@ -5320,7 +5320,10 @@ a.badge:focus, a.badge:hover {
 
 #naverIdLogin{align-self: center; }
 #naver{width:180px;}
-
+#naverIdLogin{align-self: center; }
+#naver{width:180px;}
+#kakaoIdLogin{align-self: center; margin-top: 10px }
+#kakao{width:180px;}
 .jumbotron p {
 	margin-bottom: 15px;
 	font-size: 21px;

@@ -19,14 +19,21 @@
 
 		<button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
 		<div id="naverIdLogin">
-			<a href="${url}"><img  id="naver" alt="네이버로그인" src="/res/img/naverlogin.PNG"></a>
+			<a href="${naverUrl}"><img id="naver" alt="네이버로그인"
+				src="/res/img/naverlogin.PNG"></a>
 		</div>
-		
+		<div id="kakaoIdLogin">
+			<a href="#{kakaoUrl}">
+			<img id="kakao" alt="카카오로그인" 
+			src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg">
+			</a>
+		</div>
+
 		<a class="text-center join" href="/user/join">회원가입</a>
-		
-	
-	</form>	
-		
+
+
+	</form>
+
 
 
 

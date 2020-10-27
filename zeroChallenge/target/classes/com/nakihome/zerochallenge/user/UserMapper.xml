@@ -10,12 +10,23 @@
 
 </insert>
 
-<select id="selSnsLogin" >
- 
+<insert id="insSnsUser" parameterType="SnsUserVO" >
+	INSERT INTO t_sns_user
+	(user_id, salt, user_nm, user_email, target, age, subscription_path)
+	VALUES
+	(#{user_id}, #{salt}, #{user_nm}, #{user_email}, #{target}, #{age}, #{subscription_path});
+
+</insert>
 
 
 
 
+<select id="selSnsUser" parameterType="SnsUserVO" resultType="UserDMI" >
+ 	 SELECT user_id, salt, user_nm, user_email, r_dt, m_dt, target, age, i_user, subscription_path
+   	 FROM t_sns_user
+     WHERE
+     <if test="user_id != null and user_id != ''"> user_id = #{user_id} or</if>
+     <if test="user_email != null and user_email != ''"> user_email = #{user_email}</if>
 </select>
 
 
