@@ -1,6 +1,7 @@
 package com.nakihome.zerochallenge.user;
 
 import java.io.IOException;
+import java.lang.ProcessBuilder.Redirect;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,12 +19,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.nakihome.zerochallenge.Const;
 import com.nakihome.zerochallenge.ViewRef;
-import com.nakihome.zerochallenge.api.KakaoLoginApi;
-import com.nakihome.zerochallenge.api.KakaoLoginBO;
+
 import com.nakihome.zerochallenge.api.NaverLoginBO;
 import com.nakihome.zerochallenge.user.model.SnsUserVO;
 import com.nakihome.zerochallenge.user.model.UserPARAM;
-import com.nakihome.zerochallenge.user.model.UserVO;
 
 @Controller
 @RequestMapping("/user")
@@ -51,13 +50,10 @@ public class UserController {
 		//redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
 		
 		/*카카오*/
-		String kakaoAuthUrl= KakaoLoginBO.getAuthorizationUrl(session);
-		
+	
 		System.out.println("네이버:" + naverAuthUrl);
-		System.out.println("카카오:" + kakaoAuthUrl);
 
 		model.addAttribute("naverUrl", naverAuthUrl);
-		model.addAttribute("kakaoUrl", kakaoAuthUrl);
 		model.addAttribute(Const.TITLE, "로그인");
 		model.addAttribute(Const.VIEW, "user/login");
 
@@ -72,7 +68,6 @@ public class UserController {
 	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
 			throws IOException, ParseException {
 		System.out.println("여기는 callback");
-		
 		
 		OAuth2AccessToken oauthToken;
 		oauthToken = naverLoginBO.getAccessToken(session, code, state);
@@ -131,17 +126,13 @@ public class UserController {
 		 }
 	
 	
-	@RequestMapping(value = "/kakacallback", method = { RequestMethod.GET, RequestMethod.POST })
-	public String kakaocallback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
-			throws IOException, ParseException {
-		System.out.println("여기는 callback");
-	}
+	
 
 
 
 	@RequestMapping(value = "/join")
 	public String join(Model model) {
-
+	
 		model.addAttribute(Const.TITLE, "회원가입");
 		model.addAttribute(Const.VIEW, "user/join");
 
@@ -152,13 +143,15 @@ public class UserController {
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String join(SnsUserVO param, RedirectAttributes ra) {
+		
 		int result = service.join(param);
 		if(result==Const.SUCCESS) {
-	
-		return "/user/login";}
-		
+			System.out.println("로그인");
+			return "redirect:/user/login";
+		}
+		System.out.println("실패");
 		ra.addFlashAttribute("err", result);
-		return "redirect:/user/join";
+		return "user/join";
 		
 	}
 

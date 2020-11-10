@@ -17,7 +17,8 @@ public class UserService {
 
 	public int join(SnsUserVO param) {
 
-		if (param.getSubscription_path() <= 0) {
+		if (param.getSubscription_path() == 3) {
+			System.out.println("DB추가");
 			System.out.println("가입경로"+param.getSubscription_path());
 
 			String pw = param.getUser_pw();
@@ -26,8 +27,10 @@ public class UserService {
 			
 			param.setSalt(salt);
 			param.setUser_pw(encrypt);
+			
 			return mapper.insUser(param);
 		} else {
+			
 			String id = param.getUser_id();
 			String salt = SecurityUtils.generateSalt();
 			String encrypt = SecurityUtils.getEncrypt(id, salt);
@@ -43,8 +46,8 @@ public class UserService {
 		System.out.println("login: "+ param.getUser_id());
 		if(param.getUser_id()==null) {	return Const.NO_ID;	}
 		UserDMI dbUser= mapper.selSnsUser(param);
-		if(dbUser==null) {return 5;}
 		
+		if(dbUser==null) {return 5;}
 		
 		String cryptId=SecurityUtils.getEncrypt(param.getUser_id(), dbUser.getSalt());
 		System.out.println("userid"+cryptId);

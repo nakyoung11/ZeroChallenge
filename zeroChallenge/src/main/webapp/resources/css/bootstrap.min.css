@@ -171,14 +171,17 @@ input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-se
 }
 
 fieldset {
-	padding: .35em .625em .75em;
-	margin: 0 2px;
-	border: 1px solid silver
+	padding: 0;
+	margin: 0;
+	border: 0;
 }
 
 legend {
 	padding: 0;
-	border: 0
+	border: 0;
+	
+	overflow: hidden;
+	
 }
 
 textarea {
@@ -277,7 +280,7 @@ td, th {
 .col-auto{display: flex; align-items: center;}
 .form-signin {
     width: 420px;
-    height: 600px;
+    height: 545px;
     padding: 43px;
     align-self: center;
     border-radius: 19%;
@@ -1441,6 +1444,8 @@ hr {
 	border: 0;
 	border-top: 1px solid #eee
 }
+
+
 
 .sr-only {
 	position: absolute;
@@ -3414,7 +3419,7 @@ select[multiple].form-group-lg .form-control, textarea.form-group-lg .form-contr
 	
 }
 .join{  
-	margin: 10px 0 30px 0;
+	margin: 25px 0 30px 0;
     color: #060606;
     width: 80px;
     align-self: center;}
@@ -3861,6 +3866,10 @@ tbody.collapse.in {
 	}
 }
 
+.btn-light{margin-top: 10px;  }
+
+.btn-light:hover{color:#ff0000}
+.flexbox{display: flex; flex-flow: column nowrap;}
 .btn-group, .btn-group-vertical {
 	position: relative;
 	display: inline-block;
@@ -3875,7 +3884,7 @@ tbody.collapse.in {
 .btn-group-vertical>.btn.active, .btn-group-vertical>.btn:active,
 	.btn-group-vertical>.btn:focus, .btn-group-vertical>.btn:hover,
 	.btn-group>.btn.active, .btn-group>.btn:active, .btn-group>.btn:focus,
-	.btn-group>.btn:hover {
+	.btn-group>.btn:hover .btn-light:hover{
 	z-index: 2
 }
 
